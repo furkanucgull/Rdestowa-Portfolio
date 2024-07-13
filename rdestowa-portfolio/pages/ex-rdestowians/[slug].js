@@ -33,7 +33,11 @@ const BlogPost = ({ post }) => {
       <div className={`container mx-auto mt-10 ${data.showCursor && 'cursor-none'}`}>
         <Header isBlog={true} />
         <div className="mt-10 flex flex-col items-center ">
-          <img className="w-96 h-96 rounded-lg shadow-lg object-contain" src={post.image} alt={post.title}></img>
+          <img
+            className="w-96 h-96 rounded-lg shadow-lg object-contain border-4 border-blue-600 rounded-2xl hover:border-yellow-300 duration-300"
+            src={post.image}
+            alt={post.title}
+          ></img>
           <h1 ref={textOne} className="mt-10 text-4xl mob:text-2xl laptop:text-6xl text-bold">
             {post.title}
           </h1>

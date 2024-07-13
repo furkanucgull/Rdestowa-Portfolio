@@ -1,94 +1,65 @@
-import React, { useRef, useState } from 'react';
-import { getPostBySlug, getAllPosts } from '../../utils/api';
-import Header from '../../components/Header';
-import ContentSection from '../../components/ContentSection';
-import Footer from '../../components/Footer';
 import Head from 'next/head';
-import { useIsomorphicLayoutEffect } from '../../utils';
-import { stagger } from '../../animations';
-import Button from '../../components/Button';
-import BlogEditor from '../../components/BlogEditor';
 import { useRouter } from 'next/router';
-import Cursor from '../../components/Cursor';
+import { getFakePosts, getFakePostBySlug } from '../../utils/fakeData';
+import Header from '../../components/Header';
 import data from '../../data/portfolio.json';
+import { ISOToDate } from '../../utils';
+import Footer from '../../components/Footer';
 
-const BlogPost = ({ post }) => {
-  const [showEditor, setShowEditor] = useState(false);
-  const textOne = useRef();
-  const textTwo = useRef();
+const Post = ({ post }) => {
   const router = useRouter();
 
-  useIsomorphicLayoutEffect(() => {
-    stagger([textOne.current, textTwo.current], { y: 30 }, { y: 0 });
-  }, []);
+  if (!router.isFallback && !post?.slug) {
+    return <p>Post not found</p>;
+  }
 
   return (
     <>
       <Head>
-        <title>{'Blog - ' + post.title}</title>
-        <meta name="description" content={post.preview} />
+        <title>{post.title}</title>
       </Head>
-      {data.showCursor && <Cursor />}
-
-      <div className={`container mx-auto mt-10 ${data.showCursor && 'cursor-none'}`}>
-        <Header isBlog={true} />
-        <div className="mt-10 flex flex-col">
-          <img className="w-full h-96 rounded-lg shadow-lg object-cover" src={post.image} alt={post.title}></img>
-          <h1 ref={textOne} className="mt-10 text-4xl mob:text-2xl laptop:text-6xl text-bold">
-            {post.title}
-          </h1>
-          <h2 ref={textTwo} className="mt-2 text-xl max-w-4xl text-darkgray opacity-50">
-            {post.tagline}
-          </h2>
+      <div className={`container mx-auto mb-10 ${data.showCursor && 'cursor-none'}`}>
+        <Header isBlog={true}></Header>
+        <div className="mt-10 flex flex-col items-center">
+          <img
+            className="w-80 h-96 rounded-lg shadow-lg object-contain border-4 border-t-blue-600 border-b-yellow-300 border-l rounded-2xl hover:border-yellow-300 duration-300 "
+            src={post.image}
+            alt={post.title}
+          />
+          <h1 className="mx-auto mob:p-2 text-bold text-4xl laptop:text-6xl w-full text-center mt-5">{post.title}</h1>
+          <p className="mt-10 text-lg">{post.preview}</p>
+          <span className="text-sm mt-5 opacity-25">{ISOToDate(post.date)}</span>
+          <div className="mt-10">
+            <p>{post.content}</p>
+          </div>
         </div>
-        <ContentSection content={post.content}></ContentSection>
         <Footer />
       </div>
-
-      {showEditor && (
-        <BlogEditor
-          post={post}
-          close={() => setShowEditor(false)}
-          refresh={() => router.reload(window.location.pathname)}
-        />
-      )}
     </>
   );
 };
 
-export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug, [
-    'date',
-    'slug',
-    'preview',
-    'title',
-    'tagline',
-    'preview',
-    'image',
-    'content',
-  ]);
+export async function getStaticPaths() {
+  const posts = getFakePosts(['slug']);
+  const paths = posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
 
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const post = getFakePostBySlug(params.slug, ['title', 'image', 'preview', 'content', 'date', 'slug']);
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
   return {
     props: {
-      post: {
-        ...post,
-      },
+      post,
     },
   };
 }
 
-export async function getStaticPaths() {
-  const posts = getAllPosts(['slug']);
-
-  return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      };
-    }),
-    fallback: false,
-  };
-}
-export default BlogPost;
+export default Post;

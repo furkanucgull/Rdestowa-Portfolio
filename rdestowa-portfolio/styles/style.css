@@ -3,4 +3,9 @@
   height: 450px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(24, 21, 21, 0.8);
+  border: 5px solid hsla(8, 24%, 65%, 0.756);
+  border-radius: 2%;
+}
+.profilepics:hover {
+  border-image: linear-gradient(blue, red) 1;
 }

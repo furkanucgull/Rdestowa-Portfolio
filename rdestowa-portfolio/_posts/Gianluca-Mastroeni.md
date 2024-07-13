@@ -1,6 +1,6 @@
 ---
 date: '2021-07-29T11:50:54.000Z'
-title: Marta-Darias-LUQUE
+title: Gianluca Mastroeni
 tagline: '1992'
 preview: ' Catania - Italy'
 image: '/images/giannuca.JPEG'

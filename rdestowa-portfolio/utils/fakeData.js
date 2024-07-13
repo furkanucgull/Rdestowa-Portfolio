@@ -1,34 +1,70 @@
 // utils/fakeData.js
 
-export const getFakePosts = (fields = []) => {
-  const fakePosts = [
-    {
-      slug: 'post-1',
-      title: 'First Fake Post',
-      image: 'https://placehold.it/600x400',
-      preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      author: 'John Doe',
-      date: '2023-01-01',
-    },
-    {
-      slug: 'post-2',
-      title: 'Second Fake Post',
-      image: 'https://placehold.it/600x400',
-      preview: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      author: 'Jane Smith',
-      date: '2023-02-01',
-    },
-  ];
+const fakePosts = [
+  {
+    slug: 'post-1',
+    title: 'Furkan Üçgül',
+    image: '/images/furkan.JPEG',
+    preview: 'Adana - Turkey ☾✩',
+    content: 'Content section',
+    date: '2023-12-05T19:13:08.113Z',
+  },
+  {
+    slug: 'post-2',
+    title: 'Camilla Carbonero',
+    image: '/images/cami.JPEG',
+    preview: '? - Italy',
+    content: 'Content section',
+    date: '2021-11-04T19:13:08.113Z',
+  },
+  {
+    slug: 'post-3',
+    title: 'Masha Chemruk',
+    image: '/images/masha.JPEG',
+    preview: '? - Belarus',
+    content: 'Content for section',
+    date: '2021-11-04T19:13:08.113Z',
+  },
+  {
+    slug: 'post-4',
+    title: 'Katerina Topi',
+    image: '/images/katerina.JPEG',
+    preview: ' ? - Greece',
+    content: 'Content for section',
+    date: '2021-11-04T19:13:08.113Z',
+  },
+  {
+    slug: 'post-5',
+    title: 'Gwen Darien',
+    image: '/images/gwen.JPEG',
+    preview: '?  - France',
+    content: 'Content section',
+    date: '2021-11-04T19:13:08.113Z',
+  },
+];
 
-  const items = fakePosts.map((post) => {
-    const item = {};
+export function getFakePosts(fields = []) {
+  return fakePosts.map((post) => {
+    const filteredPost = {};
     fields.forEach((field) => {
       if (post[field]) {
-        item[field] = post[field];
+        filteredPost[field] = post[field];
       }
     });
-    return item;
+    return filteredPost;
   });
+}
 
-  return items;
-};
+export function getFakePostBySlug(slug, fields = []) {
+  const post = fakePosts.find((post) => post.slug === slug);
+  if (!post) {
+    return null;
+  }
+  const filteredPost = {};
+  fields.forEach((field) => {
+    if (post[field]) {
+      filteredPost[field] = post[field];
+    }
+  });
+  return filteredPost;
+}

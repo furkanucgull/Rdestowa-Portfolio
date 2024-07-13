@@ -23,8 +23,8 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
         {({ open }) => (
           <>
             <div className="flex items-center justify-between p-2 laptop:p-0 ">
-              <h1 onClick={() => router.push('/')} className="font-medium p-2 laptop:p-0 link">
-                {name}.
+              <h1 onClick={() => router.push('/')} className="font-medium p-2 laptop:p-0 link ml-5">
+                {name}Big-Rdestowa
               </h1>
 
               <div className="flex items-center">
@@ -57,13 +57,15 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             >
               {!isBlog ? (
                 <div className="grid grid-cols-1">
+                  <button onClick={() => router.push('/current-rdestowians')}>Current Rdestowians</button>
                   {showBlog && <Button onClick={() => router.push('/ex-rdestowians')}>Ex-Rdestowians</Button>}
                 </div>
               ) : (
                 <div className="grid grid-cols-1">
-                  <Button onClick={() => router.push('/')} classes="first:ml-1">
-                    Home
+                  <Button onClick={() => router.push('/current-rdestowians')} classes="first:ml-1">
+                    Current Rdestowians
                   </Button>
+
                   {showBlog && <Button onClick={() => router.push('/ex-rdestowians')}>Ex-Rdestowians</Button>}
                 </div>
               )}
@@ -80,8 +82,8 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
           Big - Rdestowa
         </h1>
         {!isBlog ? (
-          <div className="flex">
-            <button onClick={() => router.push('/current-rdestowians')}>Current Rdestowa</button>
+          <div className="flex gap-7">
+            <button onClick={() => router.push('/current-rdestowians')}>Current Rdestowians</button>
             {showBlog && <Button onClick={() => router.push('/ex-rdestowians')}>Ex-Rdestowians</Button>}
             {mounted && theme && data.darkMode && (
               <Button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
@@ -91,7 +93,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
           </div>
         ) : (
           <div className="flex">
-            <Button onClick={() => router.push('/')}>Home</Button>
+            <button onClick={() => router.push('/current-rdestowians')}>Current Rdestowians</button>
             {showBlog && <Button onClick={() => router.push('/ex-rdestowians')}>Ex-Rdestowians</Button>}
             {showResume && (
               <Button onClick={() => router.push('/resume')} classes="first:ml-1">

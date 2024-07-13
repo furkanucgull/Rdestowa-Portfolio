@@ -1,29 +1,19 @@
 ---
-date: '2023-03-29T11:50:54.000Z'
+date: '2023-09-05T11:50:54.000Z'
 title: Alessio Garofalo
 tagline: '19-08-1995'
 preview: ' Palermo  - Italy'
 image: '/images/alessio.JPEG'
 ---
 
-burası dolmadı daha
-
-## Bedroom : Downstairs
+##
 
 #
 
-### In this flat, I made my way to become a dictator grab a beautiful avocado plant called Estupido and spread Venetian culture around in an extremely biused way.
+### I don't think i was perfect volunteer, truly I really loved each one of you. Every centimeter of Rdestowa ,s full of memories for me (perhaps because I sweeped way broom also there), about weird adventures I lived in Poland. I pooped in the middle of a street in Gdansk, bullied kids in my own workplace, had the deepest conversations about love, life and philosophy with random drunk people during the nights.
 
 #
 
-### It was an enjoyable time. I hope I will be remembered for my lavish dimmers, my infinite knowledge, and my hand as the supreme leader of the apartment.
+### Poland is out of mind a perfect square in which tradition and modernity and culture and craziness Mench and this house full of random details about our adventures here perfectly represents the amazing spirit of volunteering life.
 
-The five indisputable truths
-Always choose donkeys over potatoes second third fourth to discover the surroundings. Go in night explorations no GPS no phone lights allowed.
-
-## The five indisputable truths
-
-1. Always choose donkeys over potatoes.
-2. You can find everything you need in trash houses.
-3. Veneto is not Italy.
-4. To discover the surroundings, go in night explorations no GPS no phone lights allowed.
+### Please take care of it. Be careful about cleaning and enjoy every single moment, you will have the possibility to leave during your experience, I left by one through the people I met here and forward we think isn’t any bigger gift than-it.
